@@ -1,2 +1,11 @@
 # TAL-PINN
-A Two-stage Adaptive Lifting PINN Framework for Solving Viscous Approximations to Hyperbolic Conservation Laws
+
+This repository contains code accompanying the paper:
+
+**A Two-stage Adaptive Lifting PINN Framework for Solving Viscous Approximations to Hyperbolic Conservation Laws**
+
+Yameng Zhu, Weibing Deng, and Ran Bi.
+
+## Abstract
+
+Training physics-informed neural networks (PINNs) for hyperbolic conservation laws near the inviscid limit presents considerable difficulties: strong-form residuals are not classically defined at shock discontinuities, while small-viscosity regularization introduces narrow internal layers that exacerbate spectral bias. While lifting-based strategies can alleviate these representation difficulties by embedding the problem into a higher-dimensional space, a key practical challenge is the automatic construction of auxiliary variables that encode shock locations and interface geometry. To overcome this limitation, this paper proposes a novel Two-stage Adaptive Lifting PINN—a fully autonomous, data-driven framework. The key idea is to augment the physical coordinates by introducing a learned auxiliary field generated through $r$-adaptive coordinate transformations. Crucially, this geometric manifold is automatically extracted from a computationally inexpensive, high-viscosity coarse solution in the first stage. This pre-conditioning strategy effectively guides the network to capture steep gradients at the target small viscosity without requiring any prior knowledge of the shock dynamics. The coordinate construction and lifted training can be repeated within a viscosity continuation scheme that progressively reduces the viscosity. Theoretically, we first derive a scalar a posteriori $L^2$ error estimate to quantify the viscosity dependence of residual-based error control. Secondly, we provide a statistical interpretation establishing a variance-reduction criterion for coordinate-induced importance sampling. Finally, we perform a neural tangent kernel (NTK) analysis of the gradient-flow dynamics, explaining how adaptive augmentation enriches the tangent-feature representation and accelerates residual decay. Our numerical experiments demonstrate faster loss decay and improved small-viscosity accuracy for scalar equations and the Euler system. Ablation results show that lifting enables further accuracy gains as viscosity decreases, beyond those obtained by viscosity continuation and adaptive sampling alone.
